@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+* {
+    box-sizing: border-box;
+
+}
+body {
+    font-family: 'Lato', sans-serif;
+    margin: 0;
+    /* central positioning */
+    /* da se ne vidi scroll bar po defaultu*/
+    overflow-x: hidden;
+    background-color: darkgray;
+    color: #222;
+}
+
+.container {
+    background-color: #fafafa;
+    transform-origin: top left;
+    /* CREATED A TRANSITION ON THE TRANSFORM PROPERTY SO THE ANIMATION IS SMOOTHLY EXECUTED*/
+    transition: transform 0.5s linear;
+    width: 100vw;
+    min-height: 100vh;
+    padding: 50px;
+}
+
+/* CLASS FOR ROTATING THE NAVBAR*/ 
+.container.show-nav {
+    transform: rotate(-20deg);
+}
+
+
+/* MOVE HALF OF THE NAV BAR WITH NEGATIVE FROM THE PAGE*/
+.circle-container {
+    position: fixed;
+    top: -100px;
+    left: -100px;
+}
+
+/* CREATE A CIRCULAR NAV BAR, HALF OF IT IS SHOW ON THE PAGE*/
+.circle {
+    background-color: #ff7979;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    /* POSITION RELATIVE SO THE BUTTONS INSIDE CAN BE POSITIONED ABSOLUTE AND BE MOVED*/
+    position: relative;
+    transition: transform 0.5s linear;
+}
+
+.container.show-nav .circle{
+    transform: rotate(-70deg);
+}
+
+.circle button {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 100px;
+    background: transparent;
+    border: 0;
+    font-size: 26px;
+    color: white;
+}
+
+.circle button#open {
+    left: 60%;
+}
+
+/*POSITIONED THE CLOSE BUTTON OF SCREEN SO IT ROTATES WHEN WE CLICK ON THE HAMBURGER BUTTON*/ 
+.circle button#close {
+    top: 60%;
+    transform: rotate(90deg);
+    transform-origin: top left;
+}
+
+.container.show-nav + nav li {
+    transform: translateX(0);
+    transition-delay: 0.3s;
+}
+
+nav{
+    position: fixed;
+    bottom: 40px;
+    left: 0;
+    z-index: 100;
+}
+
+nav ul {
+    list-style-type: none;
+    padding-left: 30px;
+}
+
+nav ul li  {
+    color: #fff;
+    margin: 40px 0;
+    transform: translateX(-100%);
+    transition: transform 0.4s ease-in;
+    text-transform: uppercase;
+}
+
+nav ul li i{
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+/*MOVING THE SECOND LI*/
+nav ul li + li {
+    margin-left: 15px;
+    transform: translateX(-150%);
+}
+
+/*MOVING THE THIRD LI*/
+nav ul li + li + li{
+    margin-left: 30px;
+    transform: translateX(-150%);
+}
+
+/*IMG MATCHES THE WIDTH OF THE CONTAINER*/
+.content img {
+    max-width: 100%;
+}
+
+.content {
+    max-width: 1000px;
+    margin: 50px auto;
+}
+
+.content h1 {
+    margin: 0;
+}
+
+.content small {
+    color: #555;
+    font-style: italic;
+}
+
+.content p {
+    color: #333;
+    line-height: 1.5;
+}
